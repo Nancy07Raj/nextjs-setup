@@ -1,0 +1,9 @@
+.main{
+    place-content: center;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+}
