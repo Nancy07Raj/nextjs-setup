@@ -7,6 +7,7 @@ export default async function User(){
     const userData = await users
     return(
     <>
+    <Link href="/">Home</Link>
     <h1> List of Users</h1>
     {userData.map(u=>
             (<p key={u.id}><Link href={`/users/${u.id}`}>{u?.name}</Link></p>)
