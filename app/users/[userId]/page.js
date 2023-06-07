@@ -1,4 +1,4 @@
-import { getUser, getUserPost } from "@/lib/getJSON"
+import { getUser, getUserPost, getUsers } from "@/lib/getJSON"
 import UserPost from "./component/UserData"
 import Link from "next/link"
 import {notFound} from 'next/navigation' // provide nextjs default notfound page if no 'not-found.js' page
@@ -44,4 +44,14 @@ export default async function User({params: {userId}}){
         <UserPost promise={postData} />
         </>
     )
+}
+
+export async function generateStaticParams(){ // will collected all id's data during build
+    const users = getUsers();
+    const userData = await users
+
+   return userData.map(user=> ({
+        userId : user?.id.toString()
+    }))
+
 }
