@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
+import withLoader from "../withLoader";
 
-export default function Product() {
+function Product() {
   return (
     <div>
       <h1>Product Page</h1>
@@ -9,3 +11,7 @@ export default function Product() {
     </div>
   );
 }
+
+const withLoaderProduct = withLoader(Product);
+
+export default withLoaderProduct;

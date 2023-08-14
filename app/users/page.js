@@ -1,17 +1,25 @@
-import { getUsers } from "@/lib/getJSON"
-import Link from "next/link"
+"use client";
+// import { getUsers } from "@/lib/getJSON";
+import Link from "next/link";
+import withLoader from "../withLoader";
+import useFetch from "../useFetch";
 
-export default async function User(){
-    const users = getUsers();
-
-    const userData = await users
-    return(
-    <>
-    <Link href="/">Home</Link>
-    <h1> List of Users</h1>
-    {userData.map(u=>
-            (<p key={u.id}><Link href={`/users/${u.id}`}>{u?.name}</Link></p>)
-    )}
-    </>
-    )
+function User({ style }) {
+  const { data, error } = useFetch(
+    "https://jsonplaceholder.typicode.com/users"
+  );
+  return (
+    <div style={style}>
+      <h1> List of Users</h1>
+      {data?.map((u) => (
+        <p key={u.id}>
+          <Link style={{ textDecoration: "none" }} href={`/users/${u.id}`}>
+            {u?.name}
+          </Link>
+        </p>
+      ))}
+    </div>
+  );
 }
+
+export default withLoader(User);

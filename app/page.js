@@ -1,12 +1,13 @@
+"use client";
 import Link from "next/link";
+import withLoader from "./withLoader";
 
-export default function Home() {
+function Home({ style }) {
   return (
-    <main>
-      <Link href="/users">User</Link> <br />
-      <Link href="/about">About</Link> <br />
-      <Link href="/product">Product</Link>
-      <h1>Home page</h1>
+    <main style={style}>
+      Nextjs Tutorial for Higher Order Components and custom Hook
     </main>
   );
 }
+
+export default withLoader(Home);
